@@ -16,7 +16,9 @@ typedef struct Edge{
 	uint weight;
 }Edge;
 
-Edge * constructor_Edge(Node * sourceNode,Node * targetNode, uint weight);
+Edge * constructor_Edge();
+
+Edge * constructor_EdgeValue(Node * sourceNode,Node * targetNode, uint weight);
 
 void destructor_Edged(Edge * edge);
 

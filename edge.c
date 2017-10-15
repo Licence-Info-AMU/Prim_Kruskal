@@ -6,7 +6,19 @@
 *\date 14 octobre 2017
 */
 
-Edge * constructor_Edge(Node * sourceNode,Node * targetNode, uint weight){
+Edge * constructor_Edge(){
+	Edge * edge = NULL;
+	edge = malloc(sizeof(Edge));
+	if (edge == NULL){
+		exit(EXIT_FAILURE); // Allocation impossible
+    }
+	edge->weight = 0;
+	edge->sourceNode = NULL;
+	edge->targetNode = NULL;
+	return edge;
+}
+
+Edge * constructor_EdgeValue(Node * sourceNode,Node * targetNode, uint weight){
 	Edge * edge = NULL;
 	edge = malloc(sizeof(Edge));
 	if (edge == NULL){
