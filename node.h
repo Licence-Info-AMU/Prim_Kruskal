@@ -6,15 +6,24 @@
 *\date 14 octobre 2017
 *
 */
-#include "edge.h"
 #ifndef NODE.H
 #define	NODE.H
 
 typedef struct Node{
-	Edge * edges; //arcs = fils et poids pour y aller
-	Node * parent; //parents
-	uint degree; //nombre d'arcs
-	uint totalWeight; //poids total depuis la racine
+	Node * parent; //parents si null racine
+	Node * next; // élément suivant dans la liste
+	Node * prev; // élément précédent dans la liste
+	Node * child; // fils
+	uint degree; //nombre d'arcs donc de fils
+	int priority; 
+	int marked; //Si le noeud est marquçe ou pas
+	int id_node;
 }Node;
+
+Node * constructor_NodeValue(int id);
+
+Node * constructor_Node();
+
+void destructor_Node(Node * node);
 
 #endif	/* NODE.H */
