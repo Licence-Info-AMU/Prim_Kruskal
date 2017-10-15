@@ -15,4 +15,22 @@ typedef struct FibonacciHeap{
 	HashTable hashTable;
 }FibonacciHeap;
 
+FibonacciHeap * constructor_Heap();
+
+void insertNode(FibonacciHeap * fibonacciHeap,Node * node, int priority);
+
+Node * find_min(FibonacciHeap * fibonacciHeap);
+
+Node * delete_min(FibonacciHeap * fibonacciHeap);
+
+void decreaseKey(Node node, int priority);
+
+int delete(FibonacciHeap * fibonacciHeap,Node node);
+
+FibonacciHeap * union_heap(FibonacciHeap * fibonacciHeapx,FibonacciHeap * fibonacciHeapy);
+
+int isEmpty(FibonacciHeap * fibonacciHeap);
+
+void destructor_FibonacciHeap(FibonacciHeap * fibonacciHeap);
+
 #endif	/* HEAP.H */

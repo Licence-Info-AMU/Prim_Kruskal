@@ -10,4 +10,6 @@
 #ifndef PRIM.H
 #define	PRIM.H
 
+void PrimFHeap();
+
 #endif	/* PRIM.H */
