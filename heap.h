@@ -9,6 +9,11 @@
 #ifndef HEAP.H
 #define	HEAP.H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include "node.h"
+#include "hashTable.h"
+
 typedef struct FibonacciHeap{
 	Node * min; //pointeurs sur le min
 	int numberOfNode;

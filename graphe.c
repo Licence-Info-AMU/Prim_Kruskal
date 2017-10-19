@@ -5,5 +5,4 @@
 *\version 0.1
 *\date 14 octobre 2017
 */
-#include <stdio.h>
 #include "graphe.h"

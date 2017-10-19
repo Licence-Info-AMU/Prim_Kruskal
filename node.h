@@ -20,6 +20,8 @@ typedef struct Node{
 	int id_node;
 }Node;
 
+											//fonction pour reset les marked
+
 Node * constructor_NodeValue(int id);
 
 Node * constructor_Node();

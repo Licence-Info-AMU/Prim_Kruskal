@@ -10,4 +10,16 @@
 #ifndef KRUSKAL.H
 #define	KRUSKAL.H
 
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "graphe.h"
+
+// struct table_int{
+// 	int * tab;
+// 	int size;
+// }table_int;
+
+table_int kruskal(Graph * graph);
+
 #endif	/* KRUSKAL.H */

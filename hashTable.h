@@ -9,6 +9,9 @@
 
 #ifndef HASHTABLE.H
 #define	HASHTABLE.H
+#include <stdio.h>
+#include <stdlib.h>
+#include "node.h"
 
 typedef struct HashTableElmt{
 	int id_node;

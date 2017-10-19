@@ -5,9 +5,8 @@
 *\version 0.1
 *\date 15 octobre 2017
 */
-#include <stdio.h>
-#include <stdlib.h>
-#include "node.h"
+#include "hashTable.h"
+
 
 HashTable * constructor_HashTable(int hashTableSize){
 	HashTable * hashTable = NULL;

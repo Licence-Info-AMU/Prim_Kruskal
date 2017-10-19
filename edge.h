@@ -10,6 +10,9 @@
 #ifndef EDGE.H
 #define	EDGE.H
 
+#include <stdio.h>
+#include <stdlib.h>
+
 typedef struct Edge{
 	Node *sourceNode;
 	Node *targetNode;
