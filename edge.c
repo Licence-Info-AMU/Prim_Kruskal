@@ -5,6 +5,7 @@
 *\version 0.1
 *\date 14 octobre 2017
 */
+#include <string.h>
 #include "edge.h"
 Edge * constructor_Edge(){
 	Edge * edge = NULL;
@@ -28,6 +29,12 @@ Edge * constructor_EdgeValue(Node * sourceNode,Node * targetNode, uint weight){
 	edge->sourceNode = sourceNode;
 	edge->targetNode = targetNode;
 	return edge;
+}
+
+Edge * constructor_recopy(Edge * edge){
+	Edge * newEdge = NULL;
+	memcpy(newEdge,edge,sizeof(Edge));
+	return newEdge;
 }
 
 void destructor_Edged(Edge * edge){

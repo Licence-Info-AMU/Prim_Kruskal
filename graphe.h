@@ -17,11 +17,11 @@
 typedef struct Graph{
 	Edge * edges;
 	int nb_edges;
-	Node * nodes
+	Node * nodes;
 	int nb_node;
 }Graph;
 
-Graph* new_graph();									//A faire
+Graph* constructor_graph();									//A faire
 
 void init_graph(Graph* result, int nb_edges-1, int nb_nodes);		//A faire
 

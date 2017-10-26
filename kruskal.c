@@ -12,14 +12,14 @@ Graph kruskal(Graph * graph){
 	init_graph(result,graph->nb_nodes-1,graph->nb_nodes);
 	sort_by_weight(graph);
 	Edge * edge=graph->edges[0];
-	result->edges[0]=constructor_EdgeValue(edge->sourceNode,edge->targetNode,edge->weight);		//faire copie
+	result->edges[0]=constructor_recopy(edge);
 	edge=graph->edges[1];
-	result->edges[1]=constructor_EdgeValue(edge->sourceNode,edge->targetNode,edge->weight);		//faire copie
+	result->edges[1]=constructor_recopy(edge);
 	int num_edge=2;
 	for (int i = 2; i < edges->nb_edges; ++i){
 		edge=graph->edges[i];
 		if
-		result->edges[num_edge]=constructor_EdgeValue(edge->sourceNode,edge->targetNode,edge->weight);		//faire copie
+		result->edges[num_edge]=constructor_recopy(edge);
 		num_edge++
 	}
 

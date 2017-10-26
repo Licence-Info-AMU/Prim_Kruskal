@@ -23,6 +23,8 @@ Edge * constructor_Edge();
 
 Edge * constructor_EdgeValue(Node * sourceNode,Node * targetNode, uint weight);
 
+Edge * constructor_recopy(Edge * edge);
+
 void destructor_Edged(Edge * edge);
 
 #endif	/* EDGE.H */
