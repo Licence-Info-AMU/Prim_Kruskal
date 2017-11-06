@@ -14,11 +14,8 @@
 #include <stdlib.h>
 #include "graphe.h"
 
-// struct table_int{
-// 	int * tab;
-// 	int size;
-// }table_int;
+void try_add_edge(Edge * edge, Graph* result, int * num_edge, int * parent, int * treeDepth);
 
-table_int kruskal(Graph * graph);
+Graph kruskal(Graph * graph);
 
 #endif	/* KRUSKAL.H */
