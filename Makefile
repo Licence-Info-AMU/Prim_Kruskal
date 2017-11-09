@@ -9,10 +9,9 @@ CFLAGS = -Wall -W -std=c99 -pedantic
 LIBS   =
 
 # Rajouter le nom des executables apres '=', separes par un espace.
+# Si une ligne est pleine, rajouter '\' en fin de ligne et passer a la suivante.
 
-# Mettre ici la liste des fichiers .c separes par un espace ;
-# si besoin on peut eclater la liste sur plusieurs lignes avec "\".
-CFILES  = main.c edge.c node.c graphe.c kruskal.c prim.c
+# pour compiler sans bor-util.c
 EXECS = rebourfils
 
 # pour compiler avec bor-util.c
