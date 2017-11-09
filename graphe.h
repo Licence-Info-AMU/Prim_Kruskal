@@ -21,9 +21,9 @@ typedef struct Graph{
 	int nb_node;
 }Graph;
 
-Graph* constructor_graph();									//A faire
+Graph * constructor_graph();
 
-void init_graph(Graph* result, int nb_edges-1, int nb_nodes);		//A faire
+void init_graph(Graph* graph, int nb_edges, int nb_nodes);		//A faire
 
 void sort_edge_by_weight(Graph * graph);			//A faire
 

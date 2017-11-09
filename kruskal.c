@@ -45,8 +45,8 @@ Graph kruskal(Graph * graph){
 		parent[i]=i;
 		treeDepth[i]=1;
 	}
-	init_graph(result,graph->nb_nodes-1,graph->nb_nodes);
-	sort_by_weight(graph);
+	init_graph(result,graph->nb_nodes-1,graph->nb_nodes);		//+copier les nodes sauf si fonction add edge qui le fera
+	sort_by_weight(graph);		//need this o(n*log(n))
 	Edge * edge;
 	int num_edge=0;
 
