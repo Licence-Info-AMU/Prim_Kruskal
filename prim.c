@@ -31,9 +31,5 @@ Graph prim(Graph * graph){
 	
 	
 
-
-	if (num_edge >= graph->nb_nodes){
-		printf("j'ai un petit problème dans ma plantation num_edge = %s et il y a %s nodes\n",num_edge,graph->nb_nodes );
-	}
 	return result;
 }

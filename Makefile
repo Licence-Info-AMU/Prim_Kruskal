@@ -1,49 +1,51 @@
-# Makefile de compilation avec GTK3 - 21/02/2016
+# Makefile pour UE SIN5U3 "Reseau et Communication"
+#
+# 23/10/2013 - Edouard.Thiel@lif.univ-mrs.fr
+#Modifié par Gaëtan Perrot et Lucas Moragues
 
-SHELL   = /bin/bash
-CC      = gcc
-MKDEP   = gcc -MM
-RM      = rm -f
+SHELL  = /bin/bash
+CC     = gcc
+CFLAGS = -Wall -W -std=c99 -pedantic
+LIBS   =
 
-# Si vous voulez utiliser gdb, rajouter "-g" a la fin de CFLAGS ;
-# Si vous utilisez des fonctions de <math.h>, rajoutez "-lm" a la fin de LIBS.
-CFLAGS  = $$(pkg-config gtk+-3.0 --cflags) -Wall -std=c99 -pedantic -O2
-LIBS    = $$(pkg-config gtk+-3.0 --libs) -lm
+# Rajouter le nom des executables apres '=', separes par un espace.
 
 # Mettre ici la liste des fichiers .c separes par un espace ;
 # si besoin on peut eclater la liste sur plusieurs lignes avec "\".
 CFILES  = main.c edge.c node.c graphe.c kruskal.c prim.c
+EXECS = rebourfils
 
-# Mettre ici le nom de l'executable.
-EXEC    = main-app
+# pour compiler avec bor-util.c
+EXECSUTIL =  
 
-# Calcul automatique de la liste des fichiers ".o" a partir de CFILES.
-OBJECTS := $(CFILES:%.c=%.o)
+# pour compiler avec bor-util.c et bor-timer.c
+EXECSTIMER = triosig
 
-%.o : %.c
-	$(CC) $(CFLAGS) -c $*.c -g
 
-all :: $(EXEC)
+%.c%.o :
+	$(CC) -c $(CFLAGS) $*.c
 
-$(EXEC) : $(OBJECTS)
-	$(CC) -o $@ $^ $(LIBS)
+help ::
+	@echo "Options du make : help all clean distclean"
+
+all :: $(EXECS) $(EXECSUTIL) $(EXECSTIMER)
+
+$(EXECS) : %: %.o
+	$(CC) -o $@ $@.o $(LIBS)
+
+$(EXECSUTIL) : %: %.o bor-util.o
+	$(CC) -o $@ $@.o bor-util.o $(LIBS)
+
+$(EXECSTIMER) : %: %.o bor-util.o bor-timer.o
+	$(CC) -o $@ $@.o bor-util.o bor-timer.o $(LIBS)
 
 clean ::
-	$(RM) *.o *~ $(EXEC) depend
+	\rm -f *.o core
 
-depend : *.c *.h
-	$(MKDEP) *.c >| depend
-
-# Inclut le fichier des dependances. 
-# Le "-" devant include supprime l'erreur si le fichier est absent.
--include depend
-
-tar :: clean
-	@N=$$(pwd) ; N=$$(basename "$$N") ;\
-	(cd .. && tar cvfz "$$N.tgz" "$$N" --exclude='svg*' --exclude='*.tgz' --exclude='*.zip' && \
-	 echo "DONE ../$$N.tgz")
-	 
-zip :: clean
+distclean :: clean
+	\rm -f *% $(EXECS) $(EXECSUTIL) $(EXECSTIMER)
+	
+zip :: distclean
 	@N=$$(pwd) ; N=$$(basename "$$N") ;\
 	(cd .. && zip -r "$$N.zip" "$$N" --exclude='svg*' --exclude='*.tgz' --exclude='*.zip' && \
 	echo "DONE ../$$N.zip")
