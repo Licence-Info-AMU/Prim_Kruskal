@@ -20,7 +20,7 @@ typedef struct Node{
 	int id_node;
 }Node;
 
-											//fonction pour reset les marked (osef)
+//fonction pour reset les marked (osef)
 
 Node * constructor_NodeValue(int id);
 

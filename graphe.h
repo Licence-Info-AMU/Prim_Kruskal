@@ -15,9 +15,9 @@
 #include "edge.h"
 
 typedef struct Graph{
-	Edge * edges;
+	Edge ** edges;
 	int nb_edges;
-	Node * nodes;
+	Node ** nodes;
 	int nb_node;
 }Graph;
 
