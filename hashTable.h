@@ -7,8 +7,8 @@
 *
 */
 
-#ifndef HASHTABLE.H
-#define	HASHTABLE.H
+#ifndef HASHTABLE_H
+#define	HASHTABLE_H
 #include <stdio.h>
 #include <stdlib.h>
 #include "node.h"
@@ -24,4 +24,4 @@ HashTable * constructor_HashTable(int hashTableSize);
 
 void insertNodeInHashTable(FibonacciHeap * fibonacciHeap,int id_node,Node * node);
 
-#endif	/* HASHTABLE.H */
+#endif	/* HASHTABLE_H */

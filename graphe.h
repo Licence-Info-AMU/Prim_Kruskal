@@ -7,8 +7,8 @@
 *
 */
 
-#ifndef GRAPHE.H
-#define	GRAPHE.H
+#ifndef GRAPHE_H
+#define	GRAPHE_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,7 +18,7 @@ typedef struct Graph{
 	Edge ** edges;
 	int nb_edges;
 	Node ** nodes;
-	int nb_node;
+	int nb_nodes;
 }Graph;
 
 Graph * constructor_graph();
@@ -29,4 +29,4 @@ void sort_edge_by_weight(Graph * graph);			//A faire
 
 //void sort_edge_by_node(Graph * graph);			//A faire peut etre
 
-#endif	/* GRAPHE.H */
+#endif	/* GRAPHE_H */

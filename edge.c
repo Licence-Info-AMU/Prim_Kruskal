@@ -10,6 +10,7 @@ Edge * constructor_Edge(){
 	Edge * edge = NULL;
 	edge = malloc(sizeof(Edge));
 	if (edge == NULL){
+		perror("malloc");
 		exit(EXIT_FAILURE); // Allocation impossible
     }
 	edge->weight = 0;
@@ -18,10 +19,11 @@ Edge * constructor_Edge(){
 	return edge;
 }
 
-Edge * constructor_EdgeValue(Node * sourceNode,Node * targetNode, uint weight){
+Edge * constructor_EdgeValue(Node * sourceNode,Node * targetNode, int weight){
 	Edge * edge = NULL;
 	edge = malloc(sizeof(Edge));
 	if (edge == NULL){
+		perror("malloc");
 		exit(EXIT_FAILURE); // Allocation impossible
     }
 	edge->weight = weight;

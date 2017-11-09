@@ -1,7 +1,4 @@
-# Makefile pour UE SIN5U3 "Reseau et Communication"
-#
-# 23/10/2013 - Edouard.Thiel@lif.univ-mrs.fr
-#Modifié par Gaëtan Perrot et Lucas Moragues
+#Par Gaëtan Perrot et Lucas Moragues
 
 SHELL  = /bin/bash
 CC     = gcc
@@ -11,32 +8,28 @@ LIBS   =
 # Rajouter le nom des executables apres '=', separes par un espace.
 # Si une ligne est pleine, rajouter '\' en fin de ligne et passer a la suivante.
 
-# pour compiler sans bor-util.c
-EXECS = rebourfils
+CFILES  = main.c kruskal.c graphe.c edge.c node.c prim.c
 
-# pour compiler avec bor-util.c
-EXECSUTIL =  
+# Mettre ici le nom de l'executable.
+EXEC = main
 
-# pour compiler avec bor-util.c et bor-timer.c
-EXECSTIMER = triosig
+# Calcul automatique de la liste des fichiers ".o" a partir de CFILES.
+OBJECTS := $(CFILES:%.c=%.o)
 
+%.o : %.c
+	$(CC) $(CFLAGS) -c $*.c -g
 
-%.c%.o :
-	$(CC) -c $(CFLAGS) $*.c
+all :: $(EXEC)
 
-help ::
-	@echo "Options du make : help all clean distclean"
-
-all :: $(EXECS) $(EXECSUTIL) $(EXECSTIMER)
-
-$(EXECS) : %: %.o
+$(EXEC) : $(OBJECTS)
 	$(CC) -o $@ $@.o $(LIBS)
 
-$(EXECSUTIL) : %: %.o bor-util.o
-	$(CC) -o $@ $@.o bor-util.o $(LIBS)
-
-$(EXECSTIMER) : %: %.o bor-util.o bor-timer.o
-	$(CC) -o $@ $@.o bor-util.o bor-timer.o $(LIBS)
+help ::
+	@ echo "       make all       pour tout compiler"
+	@ echo "       make clean     pour tout nettoyer"
+	@ echo "       make distclean     pour tout nettoyer"
+	@ echo "       make zip       pour tout sauvegarder"
+	@ echo "       make tar       pour tout sauvegarder"
 
 clean ::
 	\rm -f *.o core
@@ -48,3 +41,8 @@ zip :: distclean
 	@N=$$(pwd) ; N=$$(basename "$$N") ;\
 	(cd .. && zip -r "$$N.zip" "$$N" --exclude='svg*' --exclude='*.tgz' --exclude='*.zip' && \
 	echo "DONE ../$$N.zip")
+
+tar :: clean
+	@N=$$(pwd) ; N=$$(basename "$$N") ;\
+	(cd .. && tar cvfz "$$N.tgz" "$$N" --exclude='svg*' --exclude='*.tgz' && \
+	 echo "DONE ../$$N.tgz")

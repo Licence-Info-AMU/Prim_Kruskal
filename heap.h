@@ -6,8 +6,8 @@
 *\date 15 octobre 2017
 *
 */
-#ifndef HEAP.H
-#define	HEAP.H
+#ifndef HEAP_H
+#define	HEAP_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -38,4 +38,4 @@ int isEmpty(FibonacciHeap * fibonacciHeap);
 
 void destructor_FibonacciHeap(FibonacciHeap * fibonacciHeap);
 
-#endif	/* HEAP.H */
+#endif	/* HEAP_H */

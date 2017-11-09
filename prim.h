@@ -7,14 +7,9 @@
 *
 */
 
-#ifndef PRIM.H
-#define	PRIM.H
-#include <stdio.h>
-#include <stdlib.h>
-#include "graphe.h"
-#include "hashTable.h"
-#include "heap.h"
+#ifndef PRIM_H
+#define	PRIM_H
 
-void PrimFHeap();
+Graph * prim(Graph * graph);
 
 #endif	/* PRIM.H */

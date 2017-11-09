@@ -7,8 +7,8 @@
 *
 */
 
-#ifndef KRUSKAL.H
-#define	KRUSKAL.H
+#ifndef KRUSKAL_H
+#define	KRUSKAL_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,6 +16,6 @@
 
 void try_add_edge(Edge * edge, Graph* result, int * num_edge, int * parent, int * treeDepth);
 
-Graph kruskal(Graph * graph);
+Graph * kruskal(Graph * graph);
 
-#endif	/* KRUSKAL.H */
+#endif	/* KRUSKAL_H */

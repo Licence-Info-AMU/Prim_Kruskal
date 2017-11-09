@@ -7,8 +7,8 @@
 *
 */
 
-#ifndef EDGE.H
-#define	EDGE.H
+#ifndef EDGE_H
+#define	EDGE_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,15 +18,15 @@
 typedef struct Edge{
 	Node *sourceNode;
 	Node *targetNode;
-	uint weight;
+	int weight;
 }Edge;
 
 Edge * constructor_Edge();
 
-Edge * constructor_EdgeValue(Node * sourceNode,Node * targetNode, uint weight);
+Edge * constructor_EdgeValue(Node * sourceNode,Node * targetNode, int weight);
 
 Edge * constructor_recopy(Edge * edge);
 
 void destructor_Edged(Edge * edge);
 
-#endif	/* EDGE.H */
+#endif	/* EDGE_H */
