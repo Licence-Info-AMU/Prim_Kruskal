@@ -35,7 +35,7 @@ clean ::
 	\rm -f *.o core
 
 distclean :: clean
-	\rm -f *% $(EXECS) $(EXECSUTIL) $(EXECSTIMER)
+	\rm -f *% $(EXEC)
 	
 zip :: distclean
 	@N=$$(pwd) ; N=$$(basename "$$N") ;\
