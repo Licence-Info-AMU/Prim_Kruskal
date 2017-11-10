@@ -15,10 +15,24 @@ Graph * prim(Graph * graph){
 	init_graph(result,graph->nb_nodes-1,graph->nb_nodes);
 
 	int num_node = 0;
-	result->nodes[num_node]=graph->nodes[0];		//0=nombre random
-	for (num_node = 0; num_node < graph->nb_nodes; ++num_node){
-		//faire list de  priorité
-		//prendre le plus petit
+	Node * node=graph->nodes[0];	//0=nombre random
+
+	result->nodes[num_node]=node;		//fonction recopie
+	num_node++;
+		//mark node
+	//mettre toute les edge de node dans la liste / le tas
+	for (num_node ; num_node < graph->nb_nodes; ++num_node){		//while list / tas non vide plustot
+		Edge * edge=//prendre le plus petit POP
+		if( (is_marked(edge->sourceNode) && !is_marked(edge->targetNode)) || (!is_marked(edge->sourceNode) && is_marked(edge->targetNode)) ){
+			if(is_marked(edge->sourceNode))
+				node=edge->targetNode;
+			else
+				node=edge->sourceNode;
+			result->nodes[num_node]=node;		//fonction recopie
+			num_node++;
+			//mark node
+			//mettre toute les edge de node dans la liste / le tas
+		}
 	}
 	
 	
