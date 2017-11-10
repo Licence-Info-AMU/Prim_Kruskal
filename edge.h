@@ -29,4 +29,6 @@ Edge * constructor_recopy(Edge * edge);
 
 void destructor_Edged(Edge * edge);
 
+void swap(Edge *x, Edge *y);
+
 #endif	/* EDGE_H */

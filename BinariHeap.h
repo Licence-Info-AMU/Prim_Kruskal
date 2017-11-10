@@ -12,6 +12,8 @@
 
 typedef struct BinariHeap{
 	int size;
+	int capacity;
+	Edge ** edges;
 }BinariHeap;
 
 //Récupère le Fils gauche
@@ -23,7 +25,17 @@ int childRight(int i);
 //Récupère le père
 int father(int i);
 
-void max_Heapfy(BinariHeap * binariHeap, int i);
+//Récupère le min
+Edge * getMin(BinariHeap * binariHeap);
 
-BinariHeap * constructor_BinariHeap(Graph * graph);
+BinariHeap * constructor_MinBinariHeap(int nbEdges);
+
+void insertKey(BinariHeap * binariHeap,Edge * edge);
+
+void decreaseKey(BinariHeap * binariHeap,int i, int new_val);
+
+Edge* extractMin(BinariHeap * binariHeap);
+
+void min_Heapfy(BinariHeap * binariHeap,int i);
+
 #endif	/* BINARIHEAP_H */

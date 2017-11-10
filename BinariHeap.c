@@ -7,10 +7,9 @@
 */
 #include <stdio.h>
 #include <stdlib.h>
-#include "graphe.h"
+#include <limits.h>
+#include "edge.h"
 #include "BinariHeap.h"
-
-//https://en.wikipedia.org/wiki/Binary_heap#Heap_operations
 
 //Récupère le Fils gauche
 int childLeft(int i){
@@ -23,38 +22,86 @@ int childRight(int i){
 }
 //Récupère le père
 int father(int i){
-	if(i%2 == 0)
-		return (i/2)-1;
-	return i/2;
+	return (i-1/2);
 }
 
-void max_Heapfy(BinariHeap * binariHeap,int i){
-	/*
-	left ← 2*i // ← means "assignment"
-    right ← 2*i + 1
-    largest ← i
-    
-    if left ≤ heap_length[A] and A[left] > A[largest] then:
-        largest ← left
-    if right ≤ heap_length[A] and A[right] > A[largest] then:
-        largest ← right
-    
-    if largest ≠ i then:
-        swap A[i] and A[largest]
-        Max-Heapify(A, largest)
-	 */
+Edge * getMin(BinariHeap * binariHeap){
+	return binariHeap->edges[0];
 }
 
-BinariHeap * constructor_BinariHeap(Graph * graph){
+BinariHeap * constructor_MinBinariHeap(int nbEdges){
 	BinariHeap * binariHeap = NULL;
 	binariHeap = malloc(sizeof(BinariHeap));
 	if (binariHeap == NULL){
-		perror("malloc BinariHeap");
+		perror("malloc MinBinariHeap");
 		exit(EXIT_FAILURE); // Allocation impossible
     }
-    binariHeap->size = graph->nb_edges;
-    for(int i = (binariHeap->size/2); i >= 1;i--){
-		max_Heapfy(binariHeap,i);
-	}
+    binariHeap->size=0;
+    binariHeap->capacity = nbEdges;
+    binariHeap->edges = malloc(sizeof(Edge*)*binariHeap->capacity);
+	if (binariHeap->edges == NULL){
+		perror("malloc MinBinariHeap");
+		exit(EXIT_FAILURE); // Allocation impossible
+    }
     return binariHeap;
+}
+
+void insertKey(BinariHeap * binariHeap,Edge * edge){
+	if(binariHeap->size == binariHeap->capacity){
+		perror("Overflow : Could not insertKey ");
+	}else{
+		//On insert à la fin
+		binariHeap->size++;
+		int i = binariHeap->size-1;
+		binariHeap->edges[i] = edge;
+		while(i != 0 && binariHeap->edges[father(i)]->weight > binariHeap->edges[i]->weight){
+			swap(binariHeap->edges[i],binariHeap->edges[father(i)]);
+			i=father(i);
+		}
+	}
+}
+
+void decreaseKey(BinariHeap * binariHeap,int i, int new_val){
+	binariHeap->edges[i]->weight=new_val;
+	while(i != 0 && binariHeap->edges[father(i)]->weight > binariHeap->edges[i]->weight){
+		swap(binariHeap->edges[i],binariHeap->edges[father(i)]);
+		i=father(i);
+	}
+}
+
+Edge* extractMin(BinariHeap * binariHeap){
+	if(binariHeap->size <= 0){
+		return NULL;
+	}else if(binariHeap->size == 1){
+		binariHeap->size--;
+		return 	binariHeap->edges[0];
+	}else{
+		Edge * root = binariHeap->edges[0];
+		binariHeap->edges[0] = binariHeap->edges[binariHeap->size-1];
+		binariHeap->size--;
+		min_Heapfy(binariHeap,0);
+		return root;
+	}
+}
+
+void deleteKey(BinariHeap * binariHeap,int i){
+	decreaseKey(binariHeap,i,INT_MIN);
+	extractMin(binariHeap);
+}
+
+void min_Heapfy(BinariHeap * binariHeap,int i){
+	int left = childLeft(i);
+	int right = childRight(i);
+	int smallest = i;
+	
+	if(left < binariHeap->size && binariHeap->edges[left]->weight < binariHeap->edges[i]->weight){
+		smallest=left;
+	}
+	if(right < binariHeap->size && binariHeap->edges[right]->weight < binariHeap->edges[i]->weight){
+		smallest=right;
+	}
+	if(smallest != i){
+		swap(binariHeap->edges[smallest],binariHeap->edges[i]);
+		min_Heapfy(binariHeap,smallest);
+	}
 }

@@ -42,3 +42,10 @@ void destructor_Edged(Edge * edge){
 	free(edge);
 	edge=NULL;
 }
+
+//Edge swap
+void swap(Edge *x, Edge *y){
+    Edge temp = *x;
+    *x = *y;
+    *y = temp;
+}
