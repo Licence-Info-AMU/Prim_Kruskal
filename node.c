@@ -20,7 +20,7 @@ Node * constructor_Node(){
 	node->child = NULL;
 	node->degree = 0;
 	node->priority = -1;
-	node->ismarked = 0;
+	node->is_marked = 0;
 	return node;
 }
 
@@ -28,6 +28,20 @@ Node * constructor_NodeValue(int id){
 	Node * node = constructor_Node();
 	node->id_node = id;
 	return node;
+}
+
+Node * constructor_recopy(Node * node){
+	Node * newNode = NULL;
+	memcpy(newNode,node,sizeof(Node));
+	return newNode;
+}
+
+void mark(Node * node){
+	node->is_marked = 1;
+}
+
+void unmark(Node * node){
+	node->is_marked = 0;
 }
 
 void destructor_Node(Node * node){

@@ -5,7 +5,6 @@
 *\version 0.1
 *\date 14 octobre 2017
 */
-
 #include "kruskal.h"
 
 void try_add_edge(Edge * edge, Graph* result, int * num_edge, int * parent, int * treeDepth){

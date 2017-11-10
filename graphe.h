@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "edge.h"
+#include "node.h"
 
 typedef struct Graph{
 	Edge ** edges;

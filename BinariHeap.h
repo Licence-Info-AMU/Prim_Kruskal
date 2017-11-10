@@ -10,6 +10,11 @@
 #ifndef BINARIHEAP_H
 #define	BINARIHEAP_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+#include "edge.h"
+
 typedef struct BinariHeap{
 	int size;
 	int capacity;

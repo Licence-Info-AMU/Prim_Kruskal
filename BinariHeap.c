@@ -5,10 +5,6 @@
 *\version 0.1
 *\date 09 novembre 2017
 */
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
-#include "edge.h"
 #include "BinariHeap.h"
 
 //Récupère le Fils gauche

@@ -6,10 +6,13 @@
 *\date 14 octobre 2017
 *
 */
+
 #ifndef NODE_H
 #define	NODE_H
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "edge.h"
 
 typedef struct Node{
@@ -21,17 +24,19 @@ typedef struct Node{
 	int x, y;				//position
 	int degree; //nombre d'arcs donc de fils
 	int priority; 
-	int marked; //Si le noeud est marquçe ou pas
+	int is_marked; //Si le noeud est marquçe ou pas
 	int id_node;
 }Node;
 
-//fonction pour reset les marked 
-
-//fonction is marked
+Node * constructor_Node();
 
 Node * constructor_NodeValue(int id);
 
-Node * constructor_Node();
+Node * constructor_recopy(Node * node);
+
+void mark(Node * node);
+
+void unmark(Node * node);
 
 void destructor_Node(Node * node);
 

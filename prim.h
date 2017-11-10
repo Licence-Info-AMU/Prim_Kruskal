@@ -10,6 +10,11 @@
 #ifndef PRIM_H
 #define	PRIM_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include "graphe.h"
+#include "BinariHeap.h"
+
 Graph * prim(Graph * graph);
 
 #endif	/* PRIM.H */

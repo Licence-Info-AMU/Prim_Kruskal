@@ -6,6 +6,7 @@
 *\date 14 octobre 2017
 */
 #include "edge.h"
+
 Edge * constructor_Edge(){
 	Edge * edge = NULL;
 	edge = malloc(sizeof(Edge));
