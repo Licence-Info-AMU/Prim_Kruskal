@@ -20,11 +20,11 @@ typedef struct Node{
 	struct Node * next;		// élément suivant dans la liste
 	struct Node * prev;		// élément précédent dans la liste
 	struct Node * child;	// fils
-	Edge ** edges;
+	struct Edge ** edges;
 	int x, y;				//position
 	int degree; //nombre d'arcs donc de fils
 	int priority; 
-	int is_marked; //Si le noeud est marquçe ou pas
+	int is_marked; //Si le noeud est marquee ou pas
 	int id_node;
 }Node;
 
@@ -32,7 +32,7 @@ Node * constructor_Node();
 
 Node * constructor_NodeValue(int id);
 
-Node * constructor_recopy(Node * node);
+Node * constructor_recopyNode(Node * node);
 
 void mark(Node * node);
 

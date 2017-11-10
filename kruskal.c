@@ -19,7 +19,7 @@ void try_add_edge(Edge * edge, Graph* result, int * num_edge, int * parent, int 
 		targetNodeRoot=parent[targetNodeRoot];
 	}
 	if (sourceNodeRoot != targetNodeRoot){
-		result->edges[*num_edge]=constructor_recopy(edge);		// faire un fonciton add eges qui maintiens l'intégritée ?
+		result->edges[*num_edge]=constructor_recopyEdge(edge);		// faire un fonciton add eges qui maintiens l'intégritée ?
 		*num_edge++;
 		if (treeDepth[sourceNodeRoot] >= treeDepth[targetNodeRoot]){
 			parent[targetNodeRoot]=sourceNodeRoot;

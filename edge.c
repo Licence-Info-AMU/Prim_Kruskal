@@ -11,7 +11,7 @@ Edge * constructor_Edge(){
 	Edge * edge = NULL;
 	edge = malloc(sizeof(Edge));
 	if (edge == NULL){
-		perror("malloc");
+		perror("malloc Edge");
 		exit(EXIT_FAILURE); // Allocation impossible
     }
 	edge->weight = 0;
@@ -20,20 +20,15 @@ Edge * constructor_Edge(){
 	return edge;
 }
 
-Edge * constructor_EdgeValue(Node * sourceNode,Node * targetNode, int weight){
-	Edge * edge = NULL;
-	edge = malloc(sizeof(Edge));
-	if (edge == NULL){
-		perror("malloc");
-		exit(EXIT_FAILURE); // Allocation impossible
-    }
+Edge * constructor_EdgeValue(struct Node * sourceNode,struct Node * targetNode, int weight){
+	Edge * edge = constructor_Edge();
 	edge->weight = weight;
 	edge->sourceNode = sourceNode;
 	edge->targetNode = targetNode;
 	return edge;
 }
 
-Edge * constructor_recopy(Edge * edge){
+Edge * constructor_recopyEdge(Edge * edge){
 	Edge * newEdge = NULL;
 	memcpy(newEdge,edge,sizeof(Edge));
 	return newEdge;

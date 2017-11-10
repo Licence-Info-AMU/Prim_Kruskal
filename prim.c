@@ -10,13 +10,13 @@
 Graph * prim(Graph * graph){	
 	Graph* result = constructor_graph();
 	init_graph(result,graph->nb_nodes-1,graph->nb_nodes);
-	BinariHeap * binariHeap=constructor_MinBinariHeap(graph->nb_edges)
+	BinariHeap * binariHeap=constructor_MinBinariHeap(graph->nb_edges);
 	int num_node = 0;
 	int num_edge = 0;
 
 	Edge * edge;
 	Node * node=graph->nodes[0];				//0=nombre random
-	result->nodes[num_node]=constructor_recopy(node);
+	result->nodes[num_node]=constructor_recopyNode(node);
 	num_node++;
 	mark(node);
 	for (int i = 0; i < node->degree; ++i){		//mettre toute les edge de node dans la liste / le tas
@@ -33,7 +33,7 @@ Graph * prim(Graph * graph){
 			perror("pop");
 		}
 		else if( (edge->sourceNode->is_marked && !edge->targetNode->is_marked) || (!edge->sourceNode->is_marked && edge->targetNode->is_marked) ){
-			result->edges[num_edge]=constructor_recopy(edge);
+			result->edges[num_edge]=constructor_recopyEdge(edge);
 			num_edge++;
 
 			if(edge->sourceNode->is_marked){
@@ -43,7 +43,7 @@ Graph * prim(Graph * graph){
 				node=edge->sourceNode;
 			}
 
-			result->nodes[num_node]=constructor_recopy(node);
+			result->nodes[num_node]=constructor_recopyNode(node);
 			num_node++;
 			mark(node);
 			for (int i = 0; i < node->degree; ++i){		//mettre toute les edge de node dans la liste / le tas

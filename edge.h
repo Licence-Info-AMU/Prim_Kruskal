@@ -16,16 +16,16 @@
 #include "node.h"
 
 typedef struct Edge{
-	Node *sourceNode;
-	Node *targetNode;
+	struct Node *sourceNode;
+	struct Node *targetNode;
 	int weight;
 }Edge;
 
 Edge * constructor_Edge();
 
-Edge * constructor_EdgeValue(Node * sourceNode,Node * targetNode, int weight);
+Edge * constructor_EdgeValue(struct Node * sourceNode,struct Node * targetNode, int weight);
 
-Edge * constructor_recopy(Edge * edge);
+Edge * constructor_recopyEdge(Edge * edge);
 
 void destructor_Edged(Edge * edge);
 

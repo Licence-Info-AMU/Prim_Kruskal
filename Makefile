@@ -8,7 +8,7 @@ LIBS   =
 # Rajouter le nom des executables apres '=', separes par un espace.
 # Si une ligne est pleine, rajouter '\' en fin de ligne et passer a la suivante.
 
-CFILES  = main.c kruskal.c graphe.c edge.c node.c prim.c
+CFILES  = main.c node.c edge.c graphe.c BinariHeap.c kruskal.c prim.c
 
 # Mettre ici le nom de l'executable.
 EXEC = main

@@ -10,7 +10,7 @@
 Node * constructor_Node(){
 	Node * node = malloc(sizeof(Node));
 	if (node == NULL){
-		perror("malloc");
+		perror("malloc Edge");
 		exit(EXIT_FAILURE); // Allocation impossible
     }
 	node->id_node = -1;
@@ -30,7 +30,7 @@ Node * constructor_NodeValue(int id){
 	return node;
 }
 
-Node * constructor_recopy(Node * node){
+Node * constructor_recopyNode(Node * node){
 	Node * newNode = NULL;
 	memcpy(newNode,node,sizeof(Node));
 	return newNode;
