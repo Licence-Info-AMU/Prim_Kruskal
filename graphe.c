@@ -93,3 +93,16 @@ void destructor_Graph(Graph * graph){
 	free(graph);
 	graph = NULL;
 }
+
+void show_graph(Graph * graph){
+	printf("liste des nodes du graph :\n");
+	for (int i = 0; i < graph->nb_nodes; ++i){
+		printf("%d\t:",i );
+		show_node(graph->nodes[i])
+	}
+	printf("liste des edges du graph :\n");
+	for (int i = 0; i < graph->nb_edges; ++i){
+		printf("%d\t:",i );
+		show_edge(graph->edges[i])
+	}
+}

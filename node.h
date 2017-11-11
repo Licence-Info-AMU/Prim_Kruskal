@@ -29,10 +29,12 @@ Node * constructor_NodeValue(int id,int x,int y);
 
 Node * constructor_recopyNode(Node * node);
 
+void destructor_Node(Node * node);
+
 void mark(Node * node);
 
 void unmark(Node * node);
 
-void destructor_Node(Node * node);
+void show_node(Node * node);
 
 #endif	/* NODE_H */

@@ -39,6 +39,10 @@ void destructor_Edged(Edge * edge){
 	edge=NULL;
 }
 
+void show_edge(Edge * edge){
+	printf("edge between %d %d weight:%d \n",edge->sourceNode->id_node,edge->targetNode->id_node,edge->weight );
+}
+
 //Edge swap
 void swap(Edge *x, Edge *y){
     Edge temp = *x;

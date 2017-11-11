@@ -36,6 +36,11 @@ Node * constructor_recopyNode(Node * node){
 	return newNode;
 }
 
+void destructor_Node(Node * node){
+	free(node);
+	node = NULL;
+}
+
 void mark(Node * node){
 	node->is_marked = 1;
 }
@@ -44,7 +49,6 @@ void unmark(Node * node){
 	node->is_marked = 0;
 }
 
-void destructor_Node(Node * node){
-	free(node);
-	node = NULL;
+void show_node(Node * node){
+	printf("node %d x:%d y:%d degree:%d ",node->id_node,node->x,node->y,node->degree);
 }

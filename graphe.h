@@ -40,6 +40,8 @@ void sort_edge_by_weight(Graph * graph);
 
 void destructor_Graph(Graph * graph);
 
+void show_graph(Graph * graph)
+
 //void sort_edge_by_node(Graph * graph);			//A faire peut etre
 
 #endif	/* GRAPHE_H */
