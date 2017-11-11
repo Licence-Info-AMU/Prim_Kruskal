@@ -58,8 +58,6 @@ void init_GraphEdgesRandom(Graph* graph){
 	int num_edge=0;
 	for(int i = 0;i < graph->nb_nodes;i++){
 		for(int j = 0;j < i;j++){
-			// show_node(graph->nodes[i]);
-			// show_node(graph->nodes[j]);
 			int dx = graph->nodes[j]->x - graph->nodes[i]->x;
 			int dy = graph->nodes[j]->y - graph->nodes[i]->y;
 			double weight = sqrt(dx*dx + dy*dy);
@@ -78,9 +76,9 @@ void generate_random_graph(Graph* graph, int minNodes, int maxNodes){
 }
 
 int edgeCmpFuncMin(const void * a, const void * b){
-	Edge * edgeA = (Edge*)a;
-	Edge * edgeB = (Edge*)b;
-	return (edgeA->weight < edgeB->weight);
+	Edge * edgeA = *(Edge**)a;
+	Edge * edgeB = *(Edge**)b;
+	return edgeA->weight - edgeB->weight;
 }
 
 void sort_edge_by_weight(Graph * graph){

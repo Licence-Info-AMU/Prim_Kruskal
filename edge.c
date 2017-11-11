@@ -29,7 +29,7 @@ Edge * constructor_EdgeValue(struct Node * sourceNode,struct Node * targetNode, 
 }
 
 Edge * constructor_recopyEdge(Edge * edge){
-	Edge * newEdge = NULL;
+	Edge * newEdge = constructor_Edge();
 	memcpy(newEdge,edge,sizeof(Edge));
 	return newEdge;
 }

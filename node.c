@@ -31,7 +31,7 @@ Node * constructor_NodeValue(int id,int x,int y){
 }
 
 Node * constructor_recopyNode(Node * node){
-	Node * newNode = NULL;
+	Node * newNode = constructor_Node();
 	memcpy(newNode,node,sizeof(Node));
 	return newNode;
 }
