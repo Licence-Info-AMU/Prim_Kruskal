@@ -38,9 +38,9 @@ void generate_random_graph(Graph* graph, int minNodes, int maxNodes);
 
 void sort_edge_by_weight(Graph * graph);
 
-void destructor_Graph(Graph * graph);
+void show_graph(Graph * graph);
 
-void show_graph(Graph * graph)
+void destructor_Graph(Graph * graph);
 
 //void sort_edge_by_node(Graph * graph);			//A faire peut etre
 

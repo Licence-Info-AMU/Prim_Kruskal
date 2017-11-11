@@ -17,5 +17,7 @@ int main(int argc, char * argv[]){
 	int min=5;
 	int max=15;
 	generate_random_graph(graph,min,max);
+	show_graph(graph);
+	destructor_Graph(graph);
 	return  0;
 }

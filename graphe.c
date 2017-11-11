@@ -58,8 +58,8 @@ void init_GraphEdgesRandom(Graph* graph){
 	for(int i = 0;i < graph->nb_edges;i++){
 		for(int j = 0;j < graph->nb_nodes;j++){
 			if(i != j){
-				int dx = graph->nodes[j]->x - graph->nodes[i]->x;
-				int dy = graph->nodes[j]->y - graph->nodes[i]->y;
+				int dx = &graph->nodes[j]->x - &graph->nodes[i]->x;
+				int dy = &graph->nodes[j]->y - &graph->nodes[i]->y;
 				double weight = sqrt(dx*dx + dy*dy);
 				graph->edges[i] = constructor_EdgeValue(graph->nodes[i],graph->nodes[j],weight);			
 			}
@@ -85,6 +85,19 @@ void sort_edge_by_weight(Graph * graph){
 	qsort(graph->edges,graph->nb_edges,sizeof(Edge*),edgeCmpFuncMin);
 }
 
+void show_graph(Graph * graph){
+	printf("liste des nodes du graph :\n");
+	for (int i = 0; i < graph->nb_nodes; ++i){
+		printf("%d\t:",i );
+		show_node(graph->nodes[i]);
+	}
+	printf("liste des edges du graph :\n");
+	for (int i = 0; i < graph->nb_edges; ++i){
+		printf("%d\t:",i );
+		show_edge(graph->edges[i]);
+	}
+}
+
 void destructor_Graph(Graph * graph){
 	free(graph->edges);
 	graph->edges = NULL;
@@ -92,17 +105,4 @@ void destructor_Graph(Graph * graph){
 	graph->nodes = NULL;
 	free(graph);
 	graph = NULL;
-}
-
-void show_graph(Graph * graph){
-	printf("liste des nodes du graph :\n");
-	for (int i = 0; i < graph->nb_nodes; ++i){
-		printf("%d\t:",i );
-		show_node(graph->nodes[i])
-	}
-	printf("liste des edges du graph :\n");
-	for (int i = 0; i < graph->nb_edges; ++i){
-		printf("%d\t:",i );
-		show_edge(graph->edges[i])
-	}
 }

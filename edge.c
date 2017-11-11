@@ -34,13 +34,13 @@ Edge * constructor_recopyEdge(Edge * edge){
 	return newEdge;
 }
 
+void show_edge(Edge * edge){
+	printf("edge between %d %d weight:%d \n",edge->sourceNode->id_node,edge->targetNode->id_node,edge->weight );
+}
+
 void destructor_Edged(Edge * edge){
 	free(edge);
 	edge=NULL;
-}
-
-void show_edge(Edge * edge){
-	printf("edge between %d %d weight:%d \n",edge->sourceNode->id_node,edge->targetNode->id_node,edge->weight );
 }
 
 //Edge swap
