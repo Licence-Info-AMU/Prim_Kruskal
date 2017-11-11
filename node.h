@@ -25,7 +25,7 @@ typedef struct Node{
 
 Node * constructor_Node();
 
-Node * constructor_NodeValue(int id,int x,int y);
+Node * constructor_NodeValue(int id,int x,int y,int nbEdges);
 
 Node * constructor_recopyNode(Node * node);
 

@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "kruskal.h"
+#include "prim.h"
 
 int main(int argc, char * argv[]){
 	srand(time(NULL));
@@ -22,6 +23,10 @@ int main(int argc, char * argv[]){
 	show_graph(graph);
 	printf("%d %d\n",result->nb_nodes,result->nb_edges );
 	show_graph(result);
+	Graph * resultPrim=prim(graph);
+	show_graph(resultPrim);
 	destructor_Graph(graph);
+	destructor_Graph(result);
+	destructor_Graph(resultPrim);
 	return  0;
 }

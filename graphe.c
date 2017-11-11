@@ -50,7 +50,7 @@ void init_GraphNodesRandom(Graph* graph){
 	for(int i = 0;i < graph->nb_nodes;i++){
 		int x = rand()%2000;
 		int y = rand()%2000;
-		graph->nodes[i] = constructor_NodeValue(i,x,y);
+		graph->nodes[i] = constructor_NodeValue(i,x,y,graph->nb_nodes-1);
 	}
 }
 
@@ -62,6 +62,8 @@ void init_GraphEdgesRandom(Graph* graph){
 			int dy = graph->nodes[j]->y - graph->nodes[i]->y;
 			double weight = sqrt(dx*dx + dy*dy);
 			graph->edges[num_edge] = constructor_EdgeValue(graph->nodes[i],graph->nodes[j],weight);
+			graph->nodes[i]->edges[j] = constructor_recopyEdge(graph->edges[num_edge]);
+			graph->nodes[j]->edges[i-1] = constructor_recopyEdge(graph->edges[num_edge]);
 			num_edge++;
 		}
 	}
