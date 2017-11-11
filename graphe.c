@@ -69,7 +69,7 @@ void init_GraphEdgesRandom(Graph* graph){
 
 void generate_random_graph(Graph* graph, int minNodes, int maxNodes){
 	int nbNodes = rand() % (maxNodes + 1 - minNodes) + minNodes;
-	int nbEdges = (nbNodes * nbNodes);
+	int nbEdges = (nbNodes * nbNodes-1);
 	init_graph(graph,nbEdges,nbNodes);
 	init_GraphNodesRandom(graph);
 	init_GraphEdgesRandom(graph);

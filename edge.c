@@ -14,13 +14,13 @@ Edge * constructor_Edge(){
 		perror("malloc Edge");
 		exit(EXIT_FAILURE); // Allocation impossible
     }
-	edge->weight = 0;
+	edge->weight = 0.0;
 	edge->sourceNode = NULL;
 	edge->targetNode = NULL;
 	return edge;
 }
 
-Edge * constructor_EdgeValue(struct Node * sourceNode,struct Node * targetNode, int weight){
+Edge * constructor_EdgeValue(struct Node * sourceNode,struct Node * targetNode, double weight){
 	Edge * edge = constructor_Edge();
 	edge->weight = weight;
 	edge->sourceNode = sourceNode;

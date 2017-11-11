@@ -1,4 +1,4 @@
-/**
+/**5;
 *\file main.c
 *\brief 
 *\author Gaëtan,Lucas
@@ -13,5 +13,9 @@
 
 int main(int argc, char * argv[]){
 	srand(time(NULL));
+	Graph * graph = constructor_graph();
+	int min=5;
+	int max=15;
+	generate_random_graph(graph,min,max);
 	return  0;
 }

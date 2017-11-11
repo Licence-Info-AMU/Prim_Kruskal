@@ -3,12 +3,13 @@
 SHELL  = /bin/bash
 CC     = gcc
 CFLAGS = -Wall -W -std=c99 -pedantic
-LIBS   =
+MKDEP   = gcc -MM
+LIBS   = -lm
 
 # Rajouter le nom des executables apres '=', separes par un espace.
 # Si une ligne est pleine, rajouter '\' en fin de ligne et passer a la suivante.
 
-CFILES  = main.c node.c edge.c graphe.c BinariHeap.c kruskal.c prim.c
+CFILES  = node.c edge.c graphe.c BinariHeap.c kruskal.c prim.c main.c
 
 # Mettre ici le nom de l'executable.
 EXEC = main
@@ -32,10 +33,17 @@ help ::
 	@ echo "       make tar       pour tout sauvegarder"
 
 clean ::
-	\rm -f *.o core
+	\rm -f *.o core depend
 
 distclean :: clean
-	\rm -f *% $(EXEC)
+	\rm -f *% $(EXEC) depend
+	
+depend : *.c *.h
+	$(MKDEP) *.c >| depend
+
+# Inclut le fichier des dependances. 
+# Le "-" devant include supprime l'erreur si le fichier est absent.
+-include depend
 	
 zip :: distclean
 	@N=$$(pwd) ; N=$$(basename "$$N") ;\
