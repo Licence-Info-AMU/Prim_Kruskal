@@ -7,4 +7,3 @@ kruskal.o: kruskal.c kruskal.h graphe.h edge.h node.h
 main.o: main.c graphe.h edge.h node.h
 node.o: node.c node.h edge.h
 prim.o: prim.c prim.h graphe.h edge.h node.h BinariHeap.h
-truc.o: truc.c kruskal.h graphe.h edge.h node.h

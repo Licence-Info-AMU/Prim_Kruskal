@@ -86,12 +86,12 @@ void sort_edge_by_weight(Graph * graph){
 }
 
 void show_graph(Graph * graph){
-	printf("liste des nodes du graph :\n");
+	printf("liste des %d nodes du graph :\n",graph->nb_nodes);
 	for (int i = 0; i < graph->nb_nodes; ++i){
 		printf("%d\t:",i );
 		show_node(graph->nodes[i]);
 	}
-	printf("liste des edges du graph :\n");
+	printf("liste des %d edges du graph :\n",graph->nb_edges);
 	for (int i = 0; i < graph->nb_edges; ++i){
 		printf("%d\t:",i );
 		show_edge(graph->edges[i]);
