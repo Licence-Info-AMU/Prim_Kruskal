@@ -26,7 +26,15 @@ Graph * constructor_graph();
 
 void init_graph(Graph* graph, int nb_edges, int nb_nodes);
 
+void add_edge(Graph* graph,Edge * edge,int pos);
+
+void add_node(Graph* graph,Node * node,int pos);
+
+void generate_random_graph(Graph* graph, int minNodes, int maxNodes);
+
 void sort_edge_by_weight(Graph * graph);
+
+void destructor_Graph(Graph * graph);
 
 //void sort_edge_by_node(Graph * graph);			//A faire peut etre
 

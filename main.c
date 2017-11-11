@@ -8,8 +8,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "kruskal.h"
+#include <time.h>
+#include "graphe.h"
 
 int main(int argc, char * argv[]){
+	srand(time(NULL));
 	return  0;
 }
