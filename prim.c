@@ -27,12 +27,12 @@ Graph * prim(Graph * graph){
 	}
 	edge=NULL;
 
-	while (binariHeap->size){		//while list / tas non vide plustot
+	while (!isEmptyBinariHeap(binariHeap)){		//while list / tas non vide plustot
 		edge=extractMin(binariHeap);
 		if (edge==NULL){
 			perror("pop");
 		}
-		else if( (edge->sourceNode->is_marked && !edge->targetNode->is_marked) || (!edge->sourceNode->is_marked && edge->targetNode->is_marked) ){
+		else if( (edge->sourceNode->is_marked && !(edge->targetNode->is_marked)) || (!(edge->sourceNode->is_marked) && edge->targetNode->is_marked) ){
 			result->edges[num_edge]=constructor_recopyEdge(edge);
 			num_edge++;
 

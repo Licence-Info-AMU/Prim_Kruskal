@@ -42,6 +42,13 @@ BinariHeap * constructor_MinBinariHeap(int nbEdges){
     return binariHeap;
 }
 
+void rebuildHeap(BinariHeap * binariHeap,int i){
+	while(i != 0 && binariHeap->edges[father(i)]->weight > binariHeap->edges[i]->weight){
+		swap(binariHeap->edges[i],binariHeap->edges[father(i)]);
+		i=father(i);
+	}
+}
+
 void insertKey(BinariHeap * binariHeap,Edge * edge){
 	if(binariHeap->size == binariHeap->capacity){
 		perror("Overflow : Could not insertKey ");
@@ -50,19 +57,13 @@ void insertKey(BinariHeap * binariHeap,Edge * edge){
 		binariHeap->size++;
 		int i = binariHeap->size-1;
 		binariHeap->edges[i] = edge;
-		while(i != 0 && binariHeap->edges[father(i)]->weight > binariHeap->edges[i]->weight){
-			swap(binariHeap->edges[i],binariHeap->edges[father(i)]);
-			i=father(i);
-		}
+		rebuildHeap(binariHeap,i);
 	}
 }
 
 void decreaseKey(BinariHeap * binariHeap,int i, int new_val){
 	binariHeap->edges[i]->weight=new_val;
-	while(i != 0 && binariHeap->edges[father(i)]->weight > binariHeap->edges[i]->weight){
-		swap(binariHeap->edges[i],binariHeap->edges[father(i)]);
-		i=father(i);
-	}
+	rebuildHeap(binariHeap,i);
 }
 
 Edge* extractMin(BinariHeap * binariHeap){
@@ -83,6 +84,10 @@ Edge* extractMin(BinariHeap * binariHeap){
 void deleteKey(BinariHeap * binariHeap,int i){
 	decreaseKey(binariHeap,i,INT_MIN);
 	extractMin(binariHeap);
+}
+
+int isEmptyBinariHeap(BinariHeap* binariHeap){
+    return binariHeap->size == 0;
 }
 
 void min_Heapfy(BinariHeap * binariHeap,int i){

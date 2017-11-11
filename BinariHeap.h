@@ -35,11 +35,15 @@ Edge * getMin(BinariHeap * binariHeap);
 
 BinariHeap * constructor_MinBinariHeap(int nbEdges);
 
+void rebuildHeap(BinariHeap * binariHeap,int i);
+
 void insertKey(BinariHeap * binariHeap,Edge * edge);
 
 void decreaseKey(BinariHeap * binariHeap,int i, int new_val);
 
 Edge* extractMin(BinariHeap * binariHeap);
+
+int isEmptyBinariHeap(BinariHeap* binariHeap);
 
 void min_Heapfy(BinariHeap * binariHeap,int i);
 
