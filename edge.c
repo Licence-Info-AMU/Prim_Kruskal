@@ -35,13 +35,7 @@ Edge * constructor_recopyEdge(Edge * edge){
 }
 
 void show_edge(Edge * edge){
-	printf("weight:");
-	printf("%lf \n",edge->weight);
-	printf("edge between ");
-	printf("%d ",edge->sourceNode->id_node );
-	printf("%d ",edge->targetNode->id_node );
-	printf("\n");
-	
+	printf("edge  %d\t%d\tweight: %lf \n",edge->sourceNode->id_node,edge->targetNode->id_node,edge->weight );
 }
 
 void destructor_Edged(Edge * edge){

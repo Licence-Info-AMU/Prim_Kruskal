@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "graphe.h"
+#include "kruskal.h"
 
 int main(int argc, char * argv[]){
 	srand(time(NULL));

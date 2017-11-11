@@ -45,7 +45,7 @@ void unmark(Node * node){
 }
 
 void show_node(Node * node){
-	printf("node %d x:%d y:%d degree:%d \n",node->id_node,node->x,node->y,node->degree);
+	printf("node %d x:%d\ty:%d\tdegree:%d \n",node->id_node,node->x,node->y,node->degree);
 }
 
 void destructor_Node(Node * node){
