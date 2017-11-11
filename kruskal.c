@@ -46,12 +46,16 @@ Graph * kruskal(Graph * graph){
 	}
 	init_graph(result,graph->nb_nodes-1,graph->nb_nodes);		//+copier les nodes sauf si fonction add edge qui le fera
 	sort_edge_by_weight(graph);		//need this o(n*log(n))
+	show_graph(graph);
 	Edge * edge;
 	int num_edge=0;
 
 	for (int i = 0; i < graph->nb_edges; ++i){
 		edge=graph->edges[i];
 		try_add_edge(edge,result,&num_edge,parent,treeDepth);
+	}
+	for (int i = 0; i < graph->nb_nodes; ++i){
+		result->nodes[i]=constructor_recopyNode(graph->nodes[i]);
 	}
 	if (num_edge >= graph->nb_nodes){
 		printf("j'ai un petit problème dans ma plantation num_edge = %d et il y a %d nodes\n",num_edge,graph->nb_nodes);

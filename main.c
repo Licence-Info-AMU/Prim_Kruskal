@@ -18,8 +18,10 @@ int main(int argc, char * argv[]){
 	int max=15;
 	generate_random_graph(graph,min,max);
 	show_graph(graph);
-	kruskal(graph);
+	Graph * result=kruskal(graph);
 	show_graph(graph);
+	printf("%d %d\n",result->nb_nodes,result->nb_edges );
+	show_graph(result);
 	destructor_Graph(graph);
 	return  0;
 }
