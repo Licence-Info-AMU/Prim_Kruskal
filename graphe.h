@@ -30,6 +30,10 @@ void add_edge(Graph* graph,Edge * edge,int pos);
 
 void add_node(Graph* graph,Node * node,int pos);
 
+void init_GraphNodesRandom(Graph* graph);
+
+void init_GraphEdgesRandom(Graph* graph);
+
 void generate_random_graph(Graph* graph, int minNodes, int maxNodes);
 
 void sort_edge_by_weight(Graph * graph);

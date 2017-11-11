@@ -18,12 +18,12 @@
 typedef struct Edge{
 	struct Node *sourceNode;
 	struct Node *targetNode;
-	int weight;
+	double weight;
 }Edge;
 
 Edge * constructor_Edge();
 
-Edge * constructor_EdgeValue(struct Node * sourceNode,struct Node * targetNode, int weight);
+Edge * constructor_EdgeValue(struct Node * sourceNode,struct Node * targetNode, double weight);
 
 Edge * constructor_recopyEdge(Edge * edge);
 

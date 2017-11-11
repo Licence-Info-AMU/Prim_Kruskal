@@ -6,6 +6,7 @@
 *\date 14 octobre 2017
 */
 
+#include <math.h>
 #include "graphe.h"
 
 Graph * constructor_graph(){
@@ -45,9 +46,33 @@ void add_node(Graph* graph,Node * node,int pos){
 	graph->nodes[pos] = node;
 }
 
+void init_GraphNodesRandom(Graph* graph){
+	for(int i = 0;i < graph->nb_nodes;i++){
+		int x = rand();
+		int y = rand();
+		graph->nodes[i] = constructor_NodeValue(i,x,y);
+	}
+}
+
+void init_GraphEdgesRandom(Graph* graph){
+	for(int i = 0;i < graph->nb_edges;i++){
+		for(int j = 0;j < graph->nb_nodes;j++){
+			if(i != j){
+				int dx = graph->nodes[j]->x - graph->nodes[i]->x;
+				int dy = graph->nodes[j]->y - graph->nodes[i]->y;
+				double weight = sqrt(dx*dx + dy*dy);
+				graph->edges[i] = constructor_EdgeValue(graph->nodes[i],graph->nodes[j],weight);			
+			}
+		}
+	}
+}
+
 void generate_random_graph(Graph* graph, int minNodes, int maxNodes){
 	int nbNodes = rand() % (maxNodes + 1 - minNodes) + minNodes;
-	int nbEdges = rand() % (maxNodes + 1 - nbNodes) + nbNodes;
+	int nbEdges = (nbNodes * nbNodes);
+	init_graph(graph,nbEdges,nbNodes);
+	init_GraphNodesRandom(graph);
+	init_GraphEdgesRandom(graph);
 }
 
 int edgeCmpFuncMin(const void * a, const void * b){

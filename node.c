@@ -13,19 +13,19 @@ Node * constructor_Node(){
 		perror("malloc Edge");
 		exit(EXIT_FAILURE); // Allocation impossible
     }
-	node->id_node = -1;
-	node->parent = NULL;
-	node->next = node;
-	node->prev = node;
-	node->child = NULL;
-	node->degree = 0;
-	node->priority = -1;
-	node->is_marked = 0;
+    node->edges = NULL;
+    node->x = 0;
+    node->y = 0;                //position
+    node->degree = 0; //nombre d'arcs donc de fils
+    node->is_marked = 0; //Si le noeud est marquee ou pas
+    node->id_node=0;
 	return node;
 }
 
-Node * constructor_NodeValue(int id){
+Node * constructor_NodeValue(int id,int x,int y){
 	Node * node = constructor_Node();
+	node->x = x;
+	node->y = y;
 	node->id_node = id;
 	return node;
 }
