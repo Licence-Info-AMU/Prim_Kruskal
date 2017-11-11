@@ -6,13 +6,10 @@ CFLAGS = -Wall -W -std=c99 -pedantic
 MKDEP   = gcc -MM
 LIBS   = -lm
 
-# Rajouter le nom des executables apres '=', separes par un espace.
-# Si une ligne est pleine, rajouter '\' en fin de ligne et passer a la suivante.
-
 CFILES  = node.c edge.c graphe.c BinariHeap.c kruskal.c prim.c main.c
 
 # Mettre ici le nom de l'executable.
-EXEC = main
+EXEC    = main
 
 # Calcul automatique de la liste des fichiers ".o" a partir de CFILES.
 OBJECTS := $(CFILES:%.c=%.o)
@@ -23,7 +20,17 @@ OBJECTS := $(CFILES:%.c=%.o)
 all :: $(EXEC)
 
 $(EXEC) : $(OBJECTS)
-	$(CC) -o $@ $@.o $(LIBS)
+	$(CC) -o $@ $^ $(LIBS)
+
+clean ::
+	$(RM) *.o *~ $(EXEC) depend
+
+depend : *.c *.h
+	$(MKDEP) *.c >| depend
+
+# Inclut le fichier des dependances. 
+# Le "-" devant include supprime l'erreur si le fichier est absent.
+-include depend
 
 help ::
 	@ echo "       make all       pour tout compiler"
@@ -37,13 +44,6 @@ clean ::
 
 distclean :: clean
 	\rm -f *% $(EXEC) depend
-	
-depend : *.c *.h
-	$(MKDEP) *.c >| depend
-
-# Inclut le fichier des dependances. 
-# Le "-" devant include supprime l'erreur si le fichier est absent.
--include depend
 	
 zip :: distclean
 	@N=$$(pwd) ; N=$$(basename "$$N") ;\
