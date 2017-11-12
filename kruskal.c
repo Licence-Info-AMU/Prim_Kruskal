@@ -7,7 +7,7 @@
 */
 #include "kruskal.h"
 
-Graph * kruskal(Graph * graph){
+Graph * kruskal(Graph * graph){			//selecteur
 	return better_kruskal(graph);
 	// return base_kruskal(graph);
 }
@@ -49,7 +49,6 @@ Graph * base_kruskal(Graph * graph){
 	if (num_edge >= graph->nb_nodes){
 		printf("j'ai un petit problème dans ma plantation num_edge = %d et il y a %d nodes\n",num_edge,graph->nb_nodes);
 	}
-	printf("aayy\n");
 	return result;
 }
 
@@ -104,6 +103,5 @@ Graph * better_kruskal(Graph * graph){
 	if (num_edge >= graph->nb_nodes){
 		printf("j'ai un petit problème dans ma plantation num_edge = %d et il y a %d nodes\n",num_edge,graph->nb_nodes);
 	}
-	printf("ayy\n");
 	return result;
 }
