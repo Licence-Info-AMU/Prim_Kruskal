@@ -12,7 +12,7 @@ Graph * kruskal(Graph * graph){			//selecteur
 	// return base_kruskal(graph);
 }
 
-void try_add_edge(Edge * edge, Graph* result, int * num_edge, int * root, int nb_nodes){
+void base_try_add_edge(Edge * edge, Graph* result, int * num_edge, int * root, int nb_nodes){
 	int sourceNodeRoot=root[edge->sourceNode->id_node];
 	int targetNodeRoot=root[edge->targetNode->id_node];
 
@@ -41,7 +41,7 @@ Graph * base_kruskal(Graph * graph){
 
 	for (int i = 0; i < graph->nb_edges; ++i){
 		edge=graph->edges[i];
-		try_add_edge(edge,result,&num_edge,root,graph->nb_nodes);
+		base_try_add_edge(edge,result,&num_edge,root,graph->nb_nodes);
 	}
 	for (int i = 0; i < graph->nb_nodes; ++i){		//+copier les nodes sauf si fonction add edge qui le fera
 		result->nodes[i]=constructor_recopyNode(graph->nodes[i]);
@@ -103,5 +103,9 @@ Graph * better_kruskal(Graph * graph){
 	if (num_edge >= graph->nb_nodes){
 		printf("j'ai un petit problème dans ma plantation num_edge = %d et il y a %d nodes\n",num_edge,graph->nb_nodes);
 	}
+	for (int i = 0; i < graph->nb_nodes; ++i){
+		printf("%d: parent: %d\tDepth: %d \n", i, parent[i], treeDepth[i]);
+	}
+
 	return result;
 }

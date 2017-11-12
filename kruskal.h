@@ -16,7 +16,7 @@
 
 Graph * kruskal(Graph * graph);
 
-void try_add_edge(Edge * edge, Graph* result, int * num_edge, int * root,int nb_nodes);
+void base_try_add_edge(Edge * edge, Graph* result, int * num_edge, int * root,int nb_nodes);
 
 Graph * base_kruskal(Graph * graph);
 

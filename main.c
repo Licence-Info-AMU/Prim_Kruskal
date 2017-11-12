@@ -15,8 +15,8 @@
 int main(int argc, char * argv[]){
 	srand(time(NULL));
 	Graph * graph = constructor_graph();
-	int min=5;
-	int max=15;
+	int min=10;
+	int max=20;
 	generate_random_graph(graph,min,max);
 	show_graph(graph);
 	Graph * result=base_kruskal(graph);
