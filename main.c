@@ -19,14 +19,14 @@ int main(int argc, char * argv[]){
 	int max=15;
 	generate_random_graph(graph,min,max);
 	show_graph(graph);
-	Graph * result=kruskal(graph);
-	show_graph(graph);
-	printf("%d %d\n",result->nb_nodes,result->nb_edges );
+	Graph * result=base_kruskal(graph);
 	show_graph(result);
-	Graph * resultPrim=prim(graph);
-	show_graph(resultPrim);
+	result=better_kruskal(graph);
+	show_graph(result);
+	// Graph * resultPrim=prim(graph);
+	// show_graph(resultPrim);
 	destructor_Graph(graph);
 	destructor_Graph(result);
-	destructor_Graph(resultPrim);
+	// destructor_Graph(resultPrim);
 	return  0;
 }

@@ -14,8 +14,14 @@
 #include <stdlib.h>
 #include "graphe.h"
 
-void try_add_edge(Edge * edge, Graph* result, int * num_edge, int * parent, int * treeDepth);
-
 Graph * kruskal(Graph * graph);
+
+void try_add_edge(Edge * edge, Graph* result, int * num_edge, int * root,int nb_nodes);
+
+Graph * base_kruskal(Graph * graph);
+
+void better_try_add_edge(Edge * edge, Graph* result, int * num_edge, int * parent, int * treeDepth);
+
+Graph * better_kruskal(Graph * graph);
 
 #endif	/* KRUSKAL_H */

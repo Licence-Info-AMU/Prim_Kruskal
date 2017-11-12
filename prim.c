@@ -16,19 +16,23 @@ Graph * prim(Graph * graph){
 
 	Edge * edge;
 	Node * node=graph->nodes[0];				//0=nombre random
+	show_node(node);
 	result->nodes[num_node]=constructor_recopyNode(node);
 	num_node++;
 	mark(node);
 	for (int i = 0; i < node->degree; ++i){		//mettre toute les edge de node dans la liste / le tas
 		edge=node->edges[i];
+		show_edge(edge);
 		if (!(edge->sourceNode->is_marked && edge->targetNode->is_marked)){
 			insertKey(binariHeap,edge);
 		}
 	}
 	edge=NULL;
+	printf("\n");
 
 	while (!isEmptyBinariHeap(binariHeap)){		//while list / tas non vide plustot
 		edge=extractMin(binariHeap);
+		show_edge(edge);
 		if (edge==NULL){
 			perror("pop");
 		}
@@ -42,12 +46,14 @@ Graph * prim(Graph * graph){
 			else{
 				node=edge->sourceNode;
 			}
-
+			printf("\n");
+			show_node(node);
 			result->nodes[num_node]=constructor_recopyNode(node);
 			num_node++;
 			mark(node);
 			for (int i = 0; i < node->degree; ++i){		//mettre toute les edge de node dans la liste / le tas
 				edge=node->edges[i];
+				show_edge(edge);
 				if (!(edge->sourceNode->is_marked && edge->targetNode->is_marked)){
 					insertKey(binariHeap,edge);
 				}
