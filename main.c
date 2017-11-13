@@ -14,19 +14,27 @@
 
 int main(int argc, char * argv[]){
 	srand(time(NULL));
-	Graph * graph = constructor_graph();
+	Graph * graph = constructor_Graph();
 	int min=10;
 	int max=20;
-	generate_random_graph(graph,min,max);
-	show_graph(graph);
+	generate_random_Graph(graph,min,max);
+	show_Graph(graph);
 	Graph * result=base_kruskal(graph);
-	show_graph(result);
+	show_Graph(result);
 	result=better_kruskal(graph);
-	show_graph(result);
+	show_Graph(result);
+	Tab2d * ultram=constructor_Tab2d(graph->nb_nodes,graph->nb_nodes);
+	show_ultram(ultram);
+	result=kruskal_ultrametrie(graph,ultram);
+	show_Graph(result);
+	show_ultram(ultram);
+	
+	
 	// Graph * resultPrim=prim(graph);
-	// show_graph(resultPrim);
+	// show_Graph(resultPrim);
 	destructor_Graph(graph);
 	destructor_Graph(result);
+	destructor_Tab2d(ultram);
 	// destructor_Graph(resultPrim);
 	return  0;
 }

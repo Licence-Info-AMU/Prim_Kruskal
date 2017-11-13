@@ -38,7 +38,7 @@ void show_edge(Edge * edge){
 	printf("edge  %d\t%d\tweight: %lf \n",edge->sourceNode->id_node,edge->targetNode->id_node,edge->weight );
 }
 
-void destructor_Edged(Edge * edge){
+void destructor_Edge(Edge * edge){
 	free(edge);
 	edge=NULL;
 }

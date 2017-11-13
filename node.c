@@ -10,7 +10,7 @@
 Node * constructor_Node(){
 	Node * node = malloc(sizeof(Node));
 	if (node == NULL){
-		perror("malloc Edge");
+		perror("malloc Node");
 		exit(EXIT_FAILURE); // Allocation impossible
     }
 	node->edges = NULL;
@@ -26,7 +26,7 @@ Node * constructor_NodeValue(int id,int x,int y,int nbEdges){
 	Node * node = constructor_Node();
 	node->edges = malloc(sizeof(Edge*)*nbEdges);
 	if (node->edges == NULL){
-		perror("malloc Edge");
+		perror("malloc NodeValue");
 		exit(EXIT_FAILURE); // Allocation impossible
     }
     node->degree = nbEdges;

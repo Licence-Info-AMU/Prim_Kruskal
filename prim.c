@@ -8,8 +8,8 @@
 #include "prim.h"
 
 Graph * prim(Graph * graph){	
-	Graph* result = constructor_graph();
-	init_graph(result,graph->nb_nodes-1,graph->nb_nodes);
+	Graph* result = constructor_Graph();
+	init_Graph(result,graph->nb_nodes-1,graph->nb_nodes);
 	BinariHeap * binariHeap=constructor_MinBinariHeap(graph->nb_edges);
 	int num_node = 0;
 	int num_edge = 0;

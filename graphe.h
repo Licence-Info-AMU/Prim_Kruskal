@@ -22,9 +22,9 @@ typedef struct Graph{
 	int nb_nodes;
 }Graph;
 
-Graph * constructor_graph();
+Graph * constructor_Graph();
 
-void init_graph(Graph* graph, int nb_edges, int nb_nodes);
+void init_Graph(Graph* graph, int nb_edges, int nb_nodes);
 
 void add_edge(Graph* graph,Edge * edge,int pos);
 
@@ -34,11 +34,11 @@ void init_GraphNodesRandom(Graph* graph);
 
 void init_GraphEdgesRandom(Graph* graph);
 
-void generate_random_graph(Graph* graph, int minNodes, int maxNodes);
+void generate_random_Graph(Graph* graph, int minNodes, int maxNodes);
 
 void sort_edge_by_weight(Graph * graph);
 
-void show_graph(Graph * graph);
+void show_Graph(Graph * graph);
 
 void destructor_Graph(Graph * graph);
 
