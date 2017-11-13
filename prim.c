@@ -27,6 +27,29 @@ Graph * prim(Graph * graph){
 			insertKey(binariHeap,edge);
 		}
 	}
+	
+	sortBinariHeap(binariHeap);
+	
+	//DEBUG
+	printf("Début arbre\n");
+	inorderTraversal(binariHeap,0);
+	printf("Fin arbre\n");
+	
+	printf("Début arbre\n");
+	preorderTraversal(binariHeap,0);
+	printf("Fin arbre\n");
+		
+	printf("Début arbre\n");
+	postorderTraversal(binariHeap,0);
+	printf("Fin arbre\n");
+		
+	printf("Début\n");
+	for (int i = 0; i < binariHeap->size; ++i){
+		printf("%d\t:",i );
+		show_edge(binariHeap->edges[i]);
+	}
+	//DEBUG
+	
 	edge=NULL;
 	printf("\n");
 
@@ -58,6 +81,7 @@ Graph * prim(Graph * graph){
 					insertKey(binariHeap,edge);
 				}
 			}
+			sortBinariHeap(binariHeap);
 		}
 	}
 	if (num_node > graph->nb_nodes || num_edge >= graph->nb_nodes){

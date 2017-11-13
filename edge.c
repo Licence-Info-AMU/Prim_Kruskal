@@ -44,8 +44,8 @@ void destructor_Edge(Edge * edge){
 }
 
 //Edge swap
-void swap(Edge *x, Edge *y){
-    Edge temp = *x;
+void swap(Edge **x, Edge **y){
+    Edge * temp = *x;
     *x = *y;
     *y = temp;
 }

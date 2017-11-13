@@ -18,7 +18,7 @@ int childRight(int i){
 }
 //Récupère le père
 int father(int i){
-	return (i-1/2);
+	return ((i-1)/2);
 }
 
 Edge * getMin(BinariHeap * binariHeap){
@@ -44,8 +44,14 @@ BinariHeap * constructor_MinBinariHeap(int nbEdges){
 
 void rebuildHeap(BinariHeap * binariHeap,int i){
 	while(i != 0 && binariHeap->edges[father(i)]->weight > binariHeap->edges[i]->weight){
-		swap(binariHeap->edges[i],binariHeap->edges[father(i)]);
+		swap(&binariHeap->edges[i],&binariHeap->edges[father(i)]);
 		i=father(i);
+	}
+}
+
+void sortBinariHeap(BinariHeap * binariHeap){
+	for(int i = (binariHeap->size-1)/2; i >= 0; i--){
+		min_Heapfy(binariHeap,i);
 	}
 }
 
@@ -56,8 +62,13 @@ void insertKey(BinariHeap * binariHeap,Edge * edge){
 		//On insert à la fin
 		binariHeap->size++;
 		int i = binariHeap->size-1;
+		double edgeTmpWeight=edge->weight;
+		while(i && edgeTmpWeight < binariHeap->edges[father(i)]->weight) {
+			 binariHeap->edges[i] =  binariHeap->edges[father(i)] ;
+			i = father(i) ;
+		}
 		binariHeap->edges[i] = edge;
-		rebuildHeap(binariHeap,i);
+		//rebuildHeap(binariHeap,i);
 	}
 }
 
@@ -94,15 +105,52 @@ void min_Heapfy(BinariHeap * binariHeap,int i){
 	int left = childLeft(i);
 	int right = childRight(i);
 	int smallest = i;
-	
-	if(left < binariHeap->size && binariHeap->edges[left]->weight < binariHeap->edges[i]->weight){
+	if(left < binariHeap->size && binariHeap->edges[left]->weight < binariHeap->edges[smallest]->weight){
 		smallest=left;
 	}
-	if(right < binariHeap->size && binariHeap->edges[right]->weight < binariHeap->edges[i]->weight){
+	if(right < binariHeap->size && binariHeap->edges[right]->weight < binariHeap->edges[smallest]->weight){
 		smallest=right;
 	}
 	if(smallest != i){
-		swap(binariHeap->edges[smallest],binariHeap->edges[i]);
+		//Edge * edgeTMp = binariHeap->edges[i];
+		//binariHeap->edges[i] = binariHeap->edges[smallest];
+		//binariHeap->edges[smallest] = edgeTMp;
+		swap(&binariHeap->edges[i],&binariHeap->edges[smallest]);
 		min_Heapfy(binariHeap,smallest);
 	}
+}
+
+//parcours infixe
+void inorderTraversal(BinariHeap * binariHeap,int i){
+	printf("(");
+    if(childLeft(i) < binariHeap->size) {
+        inorderTraversal(binariHeap, childLeft(i)) ;
+    }
+    printf("%d : %lf", i,binariHeap->edges[i]->weight) ;
+    if(childRight(i) < binariHeap->size) {
+        inorderTraversal(binariHeap, childRight(i)) ;
+    }
+    printf(")");
+}
+
+//parcours prefixe
+void preorderTraversal(BinariHeap * binariHeap,int i){
+    if(childLeft(i) < binariHeap->size) {
+        preorderTraversal(binariHeap, childLeft(i)) ;
+    }
+    if(childRight(i) < binariHeap->size) {
+        preorderTraversal(binariHeap, childRight(i)) ;
+    }
+    printf("(%d : %lf)", i,binariHeap->edges[i]->weight) ;
+}
+
+//parcours postfixe
+void postorderTraversal(BinariHeap * binariHeap,int i){
+    printf("(%d : %lf)", i,binariHeap->edges[i]->weight) ;
+    if(childLeft(i) < binariHeap->size) {
+        postorderTraversal(binariHeap, childLeft(i)) ;
+    }
+    if(childRight(i) < binariHeap->size) {
+        postorderTraversal(binariHeap, childRight(i)) ;
+    }
 }

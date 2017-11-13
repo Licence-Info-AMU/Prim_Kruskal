@@ -29,12 +29,12 @@ int main(int argc, char * argv[]){
 	show_Graph(result);
 	show_ultram(ultram);
 	
+	Graph * resultPrim=prim(graph);
+	show_Graph(resultPrim);
 	
-	// Graph * resultPrim=prim(graph);
-	// show_Graph(resultPrim);
 	destructor_Graph(graph);
 	destructor_Graph(result);
 	destructor_Tab2d(ultram);
-	// destructor_Graph(resultPrim);
+	destructor_Graph(resultPrim);
 	return  0;
 }

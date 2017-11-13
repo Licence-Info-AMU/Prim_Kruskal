@@ -31,6 +31,6 @@ void show_edge(Edge * edge);
 
 void destructor_Edge(Edge * edge);
 
-void swap(Edge *x, Edge *y);
+void swap(Edge **x, Edge **y);
 
 #endif	/* EDGE_H */
