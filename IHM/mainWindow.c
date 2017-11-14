@@ -19,7 +19,7 @@
 Graph * graph;
 
 void mainWindows_on_expose (Ez_event *ev){
-	int i, w, h;
+	int w, h;
 	ez_window_get_size (ev->win, &w, &h);
 	trace_graph(ev,graph,w);
 	ez_set_color (ez_blue);
