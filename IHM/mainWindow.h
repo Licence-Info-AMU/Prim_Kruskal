@@ -13,4 +13,14 @@
 //retourne 0 en cas de réussite et -1 en cas d'echec
 int runMainWindow(char * windowName,int width, int height);
 
+void kurskalBasic();
+
+void kurskalAmeliore();
+
+void primBasic();
+
+void primAmeliore();
+
+void grapheBasic();
+
 #endif	/* MAINWINDOW_H */

@@ -48,8 +48,8 @@ void add_node(Graph* graph,Node * node,int pos){
 
 void init_GraphNodesRandom(Graph* graph){
 	for(int i = 0;i < graph->nb_nodes;i++){
-		int x = rand()%2000;
-		int y = rand()%2000;
+		int x = rand()%800;
+		int y = rand()%800;
 		graph->nodes[i] = constructor_NodeValue(i,x,y,graph->nb_nodes-1);
 	}
 }

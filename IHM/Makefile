@@ -26,7 +26,7 @@ else ifeq ($(SYSTYPE),WIN32)
 
 endif
 
-CFILES  = node.c edge.c graphe.c BinariHeap.c kruskal.c prim.c ez-draw.c mainWindow.c main-app.c
+CFILES  = node.c edge.c graphe.c BinariHeap.c kruskal.c prim.c ez-draw.c drawing.c mainWindow.c main-app.c
 
 # Mettre ici le nom de l'executable.
 EXEC    = main
