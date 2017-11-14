@@ -34,6 +34,14 @@ void init_GraphNodesRandom(Graph* graph);
 
 void init_GraphEdgesRandom(Graph* graph);
 
+void init_GraphNodesRandom_rectangle(Graph* graph, int x1, int y1, int x2, int y2);
+
+void init_GraphNodesRandom_anneau(Graph* graph, int x1, int y1, double longueur1, double longueur2);
+
+void generate_random_Graph_rectangle(Graph* graph, int minNodes, int maxNodes,int x1, int y1, int x2, int y2);
+
+void generate_random_Graph_anneau(Graph* graph, int minNodes, int maxNodes,int x1, int y1, double longueur1, double longueur2);
+
 int edgeCmpFuncMin(const void * a, const void * b);
 
 void generate_random_Graph(Graph* graph, int minNodes, int maxNodes);

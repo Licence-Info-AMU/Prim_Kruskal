@@ -11,6 +11,7 @@
 #define	MAINWINDOW_H
 
 enum Algos {GRAPHEBASIC,KRUSKALBASIC,KRUSKALAMELIORE,PRIMBASIC,PRIMAMELIORE,ULTRAMETRIE};
+enum figure {DEFAULT,RECTANGLE,CERCLE,ANNEAU};
 
 //retourne 0 en cas de réussite et -1 en cas d'echec
 int runMainWindow(char * windowName,int width, int height);
@@ -26,5 +27,11 @@ void primAmeliore();
 void grapheBasic();
 
 void ultrametrie();
+
+void grapheBasicAnneau();
+
+void grapheBasicCercle();
+
+void grapheBasicRectangle();
 
 #endif	/* MAINWINDOW_H */

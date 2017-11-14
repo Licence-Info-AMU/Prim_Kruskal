@@ -79,8 +79,8 @@ void init_GraphNodesRandom_anneau(Graph* graph, int x1, int y1, double longueur1
 		longueur1=tmp;
 	}
 	for(int i = 0;i < graph->nb_nodes;i++){
-		int x = rand()%(int)(2*longueur2) +(int)longueur2;
-		int y = rand()%(int)(2*longueur2) +(int)longueur2;
+		int x = rand()%(int)(2*longueur2) +x1-(int)longueur2;
+		int y = rand()%(int)(2*longueur2) +y1-(int)longueur2;
 		int dx= x1-x;
 		int dy= y1-y;
 		double distance = sqrt(dx*dx + dy*dy);
@@ -105,6 +105,22 @@ void init_GraphEdgesRandom(Graph* graph){
 			num_edge++;
 		}
 	}
+}
+
+void generate_random_Graph_rectangle(Graph* graph, int minNodes, int maxNodes,int x1, int y1, int x2, int y2){
+	int nbNodes = rand() % (maxNodes + 1 - minNodes) + minNodes;
+	int nbEdges = (nbNodes * (nbNodes-1))/2;
+	init_Graph(graph,nbEdges,nbNodes);
+	init_GraphNodesRandom_rectangle(graph,x1, y1, x2, y2);
+	init_GraphEdgesRandom(graph);
+}
+
+void generate_random_Graph_anneau(Graph* graph, int minNodes, int maxNodes,int x1, int y1, double longueur1, double longueur2){
+	int nbNodes = rand() % (maxNodes + 1 - minNodes) + minNodes;
+	int nbEdges = (nbNodes * (nbNodes-1))/2;
+	init_Graph(graph,nbEdges,nbNodes);
+	init_GraphNodesRandom_anneau(graph,x1, y1, longueur1, longueur2);
+	init_GraphEdgesRandom(graph);
 }
 
 void generate_random_Graph(Graph* graph, int minNodes, int maxNodes){
