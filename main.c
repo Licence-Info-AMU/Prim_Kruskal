@@ -31,6 +31,9 @@ int main(int argc, char * argv[]){
 	
 	Graph * resultPrim=prim(graph);
 	show_Graph(resultPrim);
+
+	result=base_kruskal(graph);
+	show_Graph(result);
 	
 	destructor_Graph(graph);
 	destructor_Graph(result);
