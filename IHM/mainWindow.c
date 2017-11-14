@@ -17,38 +17,55 @@
 #include "mainWindow.h"
 
 Graph * graph;
+Graph * result;
+enum Algos algos;
 
 void mainWindows_on_expose (Ez_event *ev){
 	int w, h;
 	ez_window_get_size (ev->win, &w, &h);
-	trace_graph(ev,graph,w);
+	switch(algos){
+		case GRAPHEBASIC : trace_graph(ev,graph,w); break;
+		case KRUSKALBASIC : kurskalBasic();trace_graph(ev,result,w); destructor_Graph(result); break;
+		case KRUSKALAMELIORE : kurskalAmeliore();trace_graph(ev,result,w);destructor_Graph(result); break;
+		case PRIMBASIC : primBasic();trace_graph(ev,result,w);destructor_Graph(result); break;
+		case PRIMAMELIORE : primAmeliore(); trace_graph(ev,result,w);destructor_Graph(result); break;
+		case ULTRAMETRIE  : ultrametrie(); trace_graph(ev,result,w);destructor_Graph(result); break;		
+	}
+
 	ez_set_color (ez_blue);
 	ez_draw_text(ev->win,EZ_BL, 2, h-2, "O : Prim    P : Prim(Tas)\nI : Kruskal K : Kruskal(Forets)\nR : Reset\nQ : Quit");
 }
 
 void kurskalBasic(){
-	grapheBasic();
-	graph=base_kruskal(graph);
-	show_Graph(graph);
+	result = base_kruskal(graph);
+	show_Graph(result);
 }
 
 void kurskalAmeliore(){
-	grapheBasic();
-	graph=better_kruskal(graph);
-	show_Graph(graph);
+	result = better_kruskal(graph);
+	show_Graph(result);
 }
 
 void primBasic(){
-
+	result = prim(graph);
+	show_Graph(result);
 }
 
-void primAmeliore(){
-	grapheBasic();
-	graph=prim(graph);
-	show_Graph(graph);
+void  primAmeliore(){
+	result = better_prim(graph);
+	show_Graph(result);
+}
+
+void ultrametrie(){
+	Tab2d * ultram=constructor_Tab2d(graph->nb_nodes,graph->nb_nodes);
+	show_ultram(ultram);
+	result=kruskal_ultrametrie(graph,ultram);
+	show_Graph(result);
+	show_ultram(ultram);
 }
 
 void grapheBasic(){
+	graph=constructor_Graph();
 	int min=10;
 	int max=20;
 	generate_random_Graph(graph,min,max);
@@ -58,12 +75,13 @@ void grapheBasic(){
 void mainWindows_on_key_press (Ez_event *ev){
     switch (ev->key_sym) {
         case XK_q : ez_quit(); ez_send_expose(ev->win);break;
-        case XK_g : grapheBasic(); ez_send_expose(ev->win);break;
-        case XK_i : kurskalBasic(); ez_send_expose(ev->win);break;
-        case XK_k : kurskalAmeliore(); ez_send_expose(ev->win);break; 
-        case XK_o : primBasic(); ez_send_expose(ev->win);break;
-        case XK_p : primAmeliore(); ez_send_expose(ev->win);break;
-        case XK_r : graph=constructor_Graph(); ez_send_expose(ev->win);break;
+        case XK_g : algos=GRAPHEBASIC; ez_send_expose(ev->win);break;
+        case XK_i : algos=KRUSKALBASIC; ez_send_expose(ev->win);break;
+        case XK_k : algos=KRUSKALAMELIORE; ez_send_expose(ev->win);break; 
+        case XK_o : algos=PRIMBASIC; ez_send_expose(ev->win);break;
+        case XK_p : algos=PRIMAMELIORE; ez_send_expose(ev->win);break;
+        case XK_u : algos=ULTRAMETRIE; ez_send_expose(ev->win);break;
+        case XK_r : algos=GRAPHEBASIC; grapheBasic();ez_send_expose(ev->win);break;
     }
 }
 
@@ -79,7 +97,7 @@ int runMainWindow(char * windowName,int width, int height){
     if (ez_init() < 0)
 		return -1;
 	Ez_window mainWindow;
-	graph=constructor_Graph();
+	grapheBasic();
 	mainWindow = ez_window_create (width, height, windowName, mainWindows_on_event);
     
     /* Enable double buffer to prevent window flashes */

@@ -34,6 +34,8 @@ void init_GraphNodesRandom(Graph* graph);
 
 void init_GraphEdgesRandom(Graph* graph);
 
+int edgeCmpFuncMin(const void * a, const void * b);
+
 void generate_random_Graph(Graph* graph, int minNodes, int maxNodes);
 
 void sort_edge_by_weight(Graph * graph);

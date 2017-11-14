@@ -42,6 +42,15 @@ BinariHeap * constructor_MinBinariHeap(int nbEdges){
     return binariHeap;
 }
 
+void destructor_MinBinariHeap(BinariHeap * binariHeap){
+	for(int i = 0; i < binariHeap->size;i++){
+		destructor_Edge(binariHeap->edges[i]);
+	}
+	free(binariHeap->edges);
+	free(binariHeap);
+	binariHeap=NULL;
+}
+
 void rebuildHeap(BinariHeap * binariHeap,int i){
 	while(i != 0 && binariHeap->edges[father(i)]->weight > binariHeap->edges[i]->weight){
 		swap(&binariHeap->edges[i],&binariHeap->edges[father(i)]);

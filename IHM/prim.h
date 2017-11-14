@@ -15,6 +15,8 @@
 #include "graphe.h"
 #include "BinariHeap.h"
 
+Graph * better_prim(Graph * graph);
+
 Graph * prim(Graph * graph);
 
 #endif	/* PRIM.H */

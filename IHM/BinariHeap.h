@@ -35,6 +35,8 @@ Edge * getMin(BinariHeap * binariHeap);
 
 BinariHeap * constructor_MinBinariHeap(int nbEdges);
 
+void destructor_MinBinariHeap(BinariHeap * binariHeap);
+
 void rebuildHeap(BinariHeap * binariHeap,int i);
 
 void sortBinariHeap(BinariHeap * binariHeap);
