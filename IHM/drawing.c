@@ -31,9 +31,11 @@ void trace_graph(Ez_event *ev,Graph* drawGraph,int width,enum showWeight showWei
 	}
 	for(int i = 0; i < drawGraph->nb_nodes; i ++){
 		ez_set_color (ez_black);
-		char str_id_node[10];
-		sprintf(str_id_node , "%d" , drawGraph->nodes[i]->id_node);
-		ez_draw_text(ev->win,EZ_TL, drawGraph->nodes[i]->x+10, drawGraph->nodes[i]->y+10, str_id_node);
+		//if(showWeightYN == YES){
+			char str_id_node[10];
+			sprintf(str_id_node , "%d" , drawGraph->nodes[i]->id_node);
+			ez_draw_text(ev->win,EZ_TL, drawGraph->nodes[i]->x+10, drawGraph->nodes[i]->y+10, str_id_node);
+		//}
 		ez_fill_circle(ev->win, drawGraph->nodes[i]->x+2, drawGraph->nodes[i]->y+2,drawGraph->nodes[i]->x-2, drawGraph->nodes[i]->y-2);
 	}
 	

@@ -18,8 +18,8 @@
 #include "drawing.h"
 #include "mainWindow.h"
 
-int min=20;
-int max=50;
+int min=10;
+int max=100;
 
 Graph * graph;
 Graph * result;
